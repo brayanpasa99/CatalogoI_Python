@@ -7,7 +7,7 @@ from AbstractFactory.FabricaHumanos import FabricaHumanos
 from AbstractFactory.FabricaOrcos import FabricaOrcos
 
 DIMENSIONES = (650, 500)
-COLOR_TEXTO = (0, 0, 0)
+COLOR_TEXTO = (243, 255, 0)
 
 
 def principal():
