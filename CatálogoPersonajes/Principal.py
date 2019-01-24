@@ -26,7 +26,6 @@ def principal():
     LabelCabeza = Fuente.render("Cabeza", 0, COLOR_TEXTO)
 
     # Imagenes, rectángulos y demás de todos los botones
-
     imagen_boton1 = pygame.image.load('Imagenes/BotonHumanos.png')
     rect_boton_1 = imagen_boton1.get_rect()
     rect_boton_1.topleft = (20, 130)
@@ -119,30 +118,55 @@ def dibujar_botones(lista_botones, ventana):
             ventana.blit(boton['imagen'], boton['rect'])
 
 
-def pantallaBienvenida():
+def pantalla_bienvenida():
     pygame.init()
     ventana_bienvenido = pygame.display.set_mode(DIMENSIONES)
     Fuente = pygame.font.SysFont("Arial", 60)
 
     imagen_fondo = pygame.transform.scale(pygame.image.load('Imagenes/fondo9.jpg'), DIMENSIONES)
-    ventana_bienvenido.blit(imagen_fondo, (0, 0))
+    imagen_boton_catalogo = pygame.image.load('Imagenes/BotonCatalogo.png')
+    rect_boton_catalogo = imagen_boton_catalogo.get_rect()
+    rect_boton_catalogo.topleft = (100, 200)
+    imagen_boton_crear = pygame.image.load('Imagenes/BotonCreacion.png')
+    rect_boton_crear = imagen_boton_crear.get_rect()
+    rect_boton_crear.topleft = (350, 200)
+
+    botones = []
+
+    botones.append({'nombre': "BotonCatalogo", 'imagen': imagen_boton_catalogo, 'rect': rect_boton_catalogo, 'on_click': False})
+    botones.append({'nombre': "BotonCrear", 'imagen': imagen_boton_crear, 'rect': rect_boton_crear, 'on_click': False})
 
     while True:
 
         LabelBienvenido = Fuente.render("Bienvenido", 0, COLOR_TEXTO)
-        ventana_bienvenido.blit(LabelBienvenido, (200, 200))
+        ventana_bienvenido.blit(imagen_fondo, (0, 0))
+        ventana_bienvenido.blit(LabelBienvenido, (100, 100))
 
-        for eventos in pygame.event.get():
-            if eventos.type == pygame.QUIT:
+        dibujar_botones(botones, ventana_bienvenido)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 exit()
 
-            if eventos.type == KEYDOWN:
-                if eventos.key == K_SPACE:
+            if event.type == KEYDOWN:
+                if event.key == K_SPACE:
                     principal()
+
+            if event.type == MOUSEBUTTONDOWN:
+                mouse = event.pos
+                for boton in botones:
+                    boton['on_click'] = boton['rect'].colliderect(mouse[0], mouse[1], 1, 1)
+                    if boton['on_click']:
+                        if boton['nombre'] == 'BotonCatalogo':
+                            principal()
+                        elif boton['nombre'] == 'BotonCrear':
+                            pass
+                        else:
+                            print "ERROR GRAVÍSIMO IMPERDONABLE"
 
         pygame.display.flip()
         pygame.display.update()
 
 
 if __name__ == "__main__":
-    pantallaBienvenida()
+    pantalla_bienvenida()
