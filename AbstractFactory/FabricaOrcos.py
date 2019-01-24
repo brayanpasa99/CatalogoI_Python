@@ -1,10 +1,10 @@
-from CatalogoPersonajes.AbstractFactory.FabricaPrincipal import FabricaPrincipal
+from AbstractFactory.FabricaPrincipal import FabricaPrincipal
 
 
 class FabricaOrcos(FabricaPrincipal):
 
     def CrearArma(self):
-        return ArmaOrco().imagenarma()
+        return ArmaHumano()
 
     def CrearArmadura(self):
         return ArmaduraOrco().imagenarmadura()
