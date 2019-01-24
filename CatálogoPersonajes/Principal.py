@@ -110,19 +110,12 @@ def principal():
         pygame.display.update()
 
 
-def dibujar_botones(lista_botones, ventana):
-    for boton in lista_botones:
-        if boton['on_click']:
-            ventana.blit(boton['imagen'], boton['rect'])
-        else:
-            ventana.blit(boton['imagen'], boton['rect'])
-
-
 def pantalla_bienvenida():
     pygame.init()
     ventana_bienvenido = pygame.display.set_mode(DIMENSIONES)
     Fuente = pygame.font.SysFont("Arial", 60)
 
+    #IMÁGENES Y RECTÁNGULOS DE LA PRIMERA PÁGINA
     imagen_fondo = pygame.transform.scale(pygame.image.load('Imagenes/fondo9.jpg'), DIMENSIONES)
     imagen_boton_catalogo = pygame.image.load('Imagenes/BotonCatalogo.png')
     rect_boton_catalogo = imagen_boton_catalogo.get_rect()
@@ -131,26 +124,24 @@ def pantalla_bienvenida():
     rect_boton_crear = imagen_boton_crear.get_rect()
     rect_boton_crear.topleft = (350, 200)
 
+    # BOTONES DE LA PÁGINA INICIAL
     botones = []
 
-    botones.append({'nombre': "BotonCatalogo", 'imagen': imagen_boton_catalogo, 'rect': rect_boton_catalogo, 'on_click': False})
+    botones.append(
+        {'nombre': "BotonCatalogo", 'imagen': imagen_boton_catalogo, 'rect': rect_boton_catalogo, 'on_click': False})
     botones.append({'nombre': "BotonCrear", 'imagen': imagen_boton_crear, 'rect': rect_boton_crear, 'on_click': False})
 
     while True:
 
         LabelBienvenido = Fuente.render("Bienvenido", 0, COLOR_TEXTO)
         ventana_bienvenido.blit(imagen_fondo, (0, 0))
-        ventana_bienvenido.blit(LabelBienvenido, (100, 100))
+        ventana_bienvenido.blit(LabelBienvenido, (200, 100))
 
         dibujar_botones(botones, ventana_bienvenido)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
-
-            if event.type == KEYDOWN:
-                if event.key == K_SPACE:
-                    principal()
 
             if event.type == MOUSEBUTTONDOWN:
                 mouse = event.pos
@@ -166,6 +157,14 @@ def pantalla_bienvenida():
 
         pygame.display.flip()
         pygame.display.update()
+
+
+def dibujar_botones(lista_botones, ventana):
+    for boton in lista_botones:
+        if boton['on_click']:
+            ventana.blit(boton['imagen'], boton['rect'])
+        else:
+            ventana.blit(boton['imagen'], boton['rect'])
 
 
 if __name__ == "__main__":
