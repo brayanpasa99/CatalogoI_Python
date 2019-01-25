@@ -1,8 +1,5 @@
 import pygame
-from pygame.locals import *
-import abc
-import Armadura
-from Armadura import *
+from AbstractFactory.Armadura import Armadura
 
 
 class ArmaduraOrco(Armadura):

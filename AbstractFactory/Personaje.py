@@ -1,7 +1,9 @@
 import abc
 
 
-class Personaje(metaclass = abc.ABCMeta):
+class Personaje():
+
+    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def imagenpersonaje(self):

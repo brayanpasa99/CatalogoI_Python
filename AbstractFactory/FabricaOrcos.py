@@ -1,16 +1,20 @@
+from AbstractFactory.ArmaOrco import ArmaOrco
+from AbstractFactory.ArmaduraOrco import ArmaduraOrco
+from AbstractFactory.CabezaOrco import CabezaOrco
 from AbstractFactory.FabricaPrincipal import FabricaPrincipal
+from AbstractFactory.PersonajeOrco import PersonajeOrco
 
 
 class FabricaOrcos(FabricaPrincipal):
 
     def CrearArma(self):
-        return ArmaHumano()
+        return ArmaOrco()
 
     def CrearArmadura(self):
-        return ArmaduraOrco().imagenarmadura()
+        return ArmaduraOrco()
 
     def CrearCabeza(self):
-        return CabezaOrco().imagencabeza()
+        return CabezaOrco()
 
     def CrearPersonaje(self):
-        return PersonajeOrco().imagenpersonaje()
+        return PersonajeOrco()

@@ -1,6 +1,8 @@
 import abc
 
-class Cabeza(metaclass = abc.ABCMeta):
+
+class Cabeza():
+    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def imagencabeza(self):

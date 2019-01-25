@@ -1,16 +1,20 @@
+from AbstractFactory.ArmaElfo import ArmaElfo
+from AbstractFactory.ArmaduraElfo import ArmaduraElfo
+from AbstractFactory.CabezaElfo import CabezaElfo
 from AbstractFactory.FabricaPrincipal import FabricaPrincipal
+from AbstractFactory.PersonajeElfo import PersonajeElfo
 
 
 class FabricaElfos(FabricaPrincipal):
 
     def CrearArma(self):
-        return ArmaElfo().imagenarma()
+        return ArmaElfo()
 
     def CrearArmadura(self):
-        return ArmaduraElfo().imagenarmadura()
+        return ArmaduraElfo()
 
     def CrearCabeza(self):
-        return CabezaElfo().imagencabeza()
+        return CabezaElfo()
 
     def CrearPersonaje(self):
-        return PersonajeElfo().imagenpersonaje()
+        return PersonajeElfo()

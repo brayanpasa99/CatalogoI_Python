@@ -1,7 +1,9 @@
 import abc
 
 
-class FabricaPrincipal(metaclass = abc.ABCMeta):
+class FabricaPrincipal():
+
+    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def CrearArma(self):

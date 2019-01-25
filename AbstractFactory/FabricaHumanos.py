@@ -1,16 +1,20 @@
+from AbstractFactory.ArmaHumano import ArmaHumano
+from AbstractFactory.ArmaduraHumano import ArmaduraHumano
+from AbstractFactory.CabezaHumano import CabezaHumano
 from AbstractFactory.FabricaPrincipal import FabricaPrincipal
+from AbstractFactory.PersonajeHumano import PersonajeHumano
 
 
 class FabricaHumanos(FabricaPrincipal):
 
     def CrearArma(self):
-        return ArmaHumano().imagenarma()
+        return ArmaHumano()
 
     def CrearArmadura(self):
-        return ArmaduraHumano().imagenarmadura()
+        return ArmaduraHumano()
 
     def CrearCabeza(self):
-        return CabezaHumano().imagencabeza()
+        return CabezaHumano()
 
     def CrearPersonaje(self):
-        return PersonajeHumano().imagenpersonaje()
+        return PersonajeHumano()

@@ -1,4 +1,5 @@
-from AbstractFactory import Armadura
+import pygame
+from AbstractFactory.Armadura import Armadura
 
 
 class ArmaduraElfo(Armadura):
