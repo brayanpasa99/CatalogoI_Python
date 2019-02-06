@@ -1,16 +1,19 @@
-from Builder.Builder import Builder
+from AbstractFactory.FabricaOrcos import FabricaOrcos
+from BuilderPattern.Builder import Builder
 
 
 class Orco(Builder):
 
-    def _construircabeza(self):
-        pass
+    __FabricaOrc = FabricaOrcos()
 
-    def _contruirpersonaje(self):
-        pass
+    def obtenercabeza(self):
+        return self.__FabricaOrc.CrearCabeza().imagencabeza()
 
-    def _construirarma(self):
-        pass
+    def obtenerpersonaje(self):
+        return self.__FabricaOrc.CrearPersonaje().imagenpersonaje()
 
-    def _construirarmadura(self):
-        pass
+    def obtenerarma(self):
+        return self.__FabricaOrc.CrearArma().imagenarma()
+
+    def obtenerarmadura(self):
+        return self.__FabricaOrc.CrearArmadura().imagenarmadura()

@@ -1,16 +1,19 @@
+from AbstractFactory.FabricaHumanos import FabricaHumanos
 from BuilderPattern.Builder import Builder
 
 
 class Humano(Builder):
 
+    __FabricaHum = FabricaHumanos()
+
     def obtenercabeza(self):
-        return "CabezaHumano"
+        return self.__FabricaHum.CrearCabeza().imagencabeza()
 
     def obtenerpersonaje(self):
-        return "PersonajeHumano"
+        return self.__FabricaHum.CrearPersonaje().imagenpersonaje()
 
     def obtenerarma(self):
-        return "ArmaHumano"
+        return self.__FabricaHum.CrearArma().imagenarma()
 
     def obtenerarmadura(self):
-        return "ArmaduraHumano"
+        return self.__FabricaHum.CrearArmadura().imagenarmadura()

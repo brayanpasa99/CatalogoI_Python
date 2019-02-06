@@ -6,6 +6,9 @@ from pygame.locals import *
 from AbstractFactory.FabricaElfos import FabricaElfos
 from AbstractFactory.FabricaHumanos import FabricaHumanos
 from AbstractFactory.FabricaOrcos import FabricaOrcos
+from BuilderPattern.Elfo import Elfo
+from BuilderPattern.Humano import Humano
+from BuilderPattern.Orco import Orco
 
 DIMENSIONES = (650, 500)
 COLOR_TEXTO = (243, 255, 0)
@@ -86,34 +89,29 @@ def catalogo_personajes():
                     boton['on_click'] = boton['rect'].colliderect(mouse[0], mouse[1], 1, 1)
                     if boton['on_click']:
                         if boton['nombre'] == 'BotonHumanos':
-                            objeto_arma = FabricaHumanos().CrearArma()
-                            imagen_arma = objeto_arma.imagenarma()
-                            objeto_armadura = FabricaHumanos().CrearArmadura()
-                            imagen_armadura = objeto_armadura.imagenarmadura()
-                            objeto_cabeza = FabricaHumanos().CrearCabeza()
-                            imagen_cabeza = objeto_cabeza.imagencabeza()
-                            objeto_personaje = FabricaHumanos().CrearPersonaje()
-                            imagen_personaje = objeto_personaje.imagenpersonaje()
+
+                            ImagenesHumanos = Humano()
+                            imagen_arma = ImagenesHumanos.obtenerarma()
+                            imagen_armadura = ImagenesHumanos.obtenerarmadura()
+                            imagen_cabeza = ImagenesHumanos.obtenercabeza()
+                            imagen_personaje = ImagenesHumanos.obtenerpersonaje()
                         elif boton['nombre'] == 'BotonElfos':
-                            objeto_arma = FabricaElfos().CrearArma()
-                            imagen_arma = objeto_arma.imagenarma()
-                            objeto_armadura = FabricaElfos().CrearArmadura()
-                            imagen_armadura = objeto_armadura.imagenarmadura()
-                            objeto_cabeza = FabricaElfos().CrearCabeza()
-                            imagen_cabeza = objeto_cabeza.imagencabeza()
-                            objeto_personaje = FabricaElfos().CrearPersonaje()
-                            imagen_personaje = objeto_personaje.imagenpersonaje()
+
+                            ImagenesElfos = Elfo()
+                            imagen_arma = ImagenesElfos.obtenerarma()
+                            imagen_armadura = ImagenesElfos.obtenerarmadura()
+                            imagen_cabeza = ImagenesElfos.obtenercabeza()
+                            imagen_personaje = ImagenesElfos.obtenerpersonaje()
                         elif boton['nombre'] == 'BotonOrcos':
-                            objeto_arma = FabricaOrcos().CrearArma()
-                            imagen_arma = objeto_arma.imagenarma()
-                            objeto_armadura = FabricaOrcos().CrearArmadura()
-                            imagen_armadura = objeto_armadura.imagenarmadura()
-                            objeto_cabeza = FabricaOrcos().CrearCabeza()
-                            imagen_cabeza = objeto_cabeza.imagencabeza()
-                            objeto_personaje = FabricaOrcos().CrearPersonaje()
-                            imagen_personaje = objeto_personaje.imagenpersonaje()
+
+                            ImagenOrcos = Orco()
+                            imagen_arma = ImagenOrcos.obtenerarma()
+                            imagen_armadura = ImagenOrcos.obtenerarmadura()
+                            imagen_cabeza = ImagenOrcos.obtenercabeza()
+                            imagen_personaje = ImagenOrcos.obtenerpersonaje()
                         else:
                             print "ERROR GRAVÍSIMO IMPERDONABLE"
+                            sys.exit()
 
             if event.type == MOUSEBUTTONUP:
                 for boton in botones:

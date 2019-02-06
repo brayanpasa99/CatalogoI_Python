@@ -1,16 +1,19 @@
+from AbstractFactory.FabricaElfos import FabricaElfos
 from BuilderPattern.Builder import Builder
 
 
 class Elfo(Builder):
 
+    __FabricaElf = FabricaElfos()
+
     def obtenercabeza(self):
-        return "CabezaElfo"
+        return self.__FabricaElf.CrearCabeza().imagencabeza()
 
     def obtenerpersonaje(self):
-        return "PersonajeElfo"
+        return self.__FabricaElf.CrearPersonaje().imagenpersonaje()
 
     def obtenerarma(self):
-        return "ArmaHumanoElfo"
+        return self.__FabricaElf.CrearArma().imagenarma()
 
     def obtenerarmadura(self):
-        return "ArmaduraElfo"
+        return self.__FabricaElf.CrearArmadura().imagenarmadura()
